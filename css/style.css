@@ -164,5 +164,13 @@ footer{
     .gallery{
         grid-template-columns:1fr;
     }
+    .btn{
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 15px 20px;
+        font-size: 16px;
+        text-align: center;
+    }
 
 }
