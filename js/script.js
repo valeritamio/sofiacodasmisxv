@@ -32,3 +32,17 @@ function updateCountdown(){
 updateCountdown();
 
 setInterval(updateCountdown,1000);
+
+function enviarSugerencia(){
+    const artista = document.getElementById('artista').value.trim();
+    const cancion = document.getElementById('cancion').value.trim();
+
+    if(!artista || !cancion){
+        alert('Por favor completá el artista y la canción 🎵');
+        return;
+    }
+
+    const mensaje = `Hola Valentina! 🎶 Quiero sugerir una canción para la fiesta de Sofía: *${cancion}* de *${artista}*`;
+    const url = `https://wa.me/5493624656373?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+}
