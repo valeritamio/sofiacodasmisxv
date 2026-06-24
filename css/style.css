@@ -6,8 +6,8 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#f0e6b8d2;
-    color:#0c0101;
+    background:#EFDFC6;
+    color:#744726;
     background-image: url('../img/fondo\ disco.png');
     background-repeat: repeat; /* o no-repeat si es una sola imagen grande */
     background-size: contain; /* o contain, o un tamaño fijo como 300px */
@@ -18,11 +18,26 @@ body{
 .hero-image{
     width:100%;
     display:block;
+    animation: portadaEntrada 1.5s ease-out forwards, brilloDorado 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.icono-seccion {
+    max-height: 200px;
+    width: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+    transform-origin: center;
+    animation: iconoPulse 3.8s ease-in-out infinite;
+    will-change: transform, filter;
 }
 
 .hero-content{
     text-align:center;
     padding:30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: contenidoEntrada 1.5s ease-out 0.4s forwards;
 }
 
 h1{
@@ -34,7 +49,7 @@ h1{
 h2{
     font-family:'Cormorant Garamond', serif;
     font-size:40px;
-    color:#977504;
+    color:#744726;
     margin-bottom:10px;
 }
 
@@ -43,7 +58,8 @@ h3{
 }
 
 p {
-    font-size: 20px;
+    font-size: 18px;
+    color: #744726;
 }
 
 .date-box{
@@ -58,7 +74,7 @@ p {
 .btn{
     display:inline-block;
     padding:12px 25px;
-    background:#d4af37;
+    background:#b38a6a;
     color:white;
     border-radius:40px;
     text-decoration:none;
@@ -95,7 +111,7 @@ p {
     padding: 30px 120px; /* espacio a los costados para las bolas */
     border-radius: 25px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    box-shadow: none;
     position: relative;
     overflow: hidden;
 }
@@ -161,7 +177,7 @@ p {
     width:80%;
     padding:12px 15px;
     margin:8px auto;
-    border:1px solid #d4af37;
+    border:1px solid #b38a6a;
     border-radius:25px;
     font-size:15px;
     display:block;
@@ -176,9 +192,63 @@ footer{
     padding:50px 20px;
 }
 
-@media(max-width:768px){
+@keyframes portadaEntrada {
+    0% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-    h1{
+@keyframes contenidoEntrada {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes iconoPulse {
+    0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0 rgba(180,138,106,0)); }
+    40% { transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 10px 30px rgba(180,138,106,0.32)); }
+    50% { transform: translateY(-8px) scale(1.05); filter: drop-shadow(0 18px 40px rgba(212,175,55,0.5)) brightness(1.04); }
+    60% { transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 10px 30px rgba(180,138,106,0.32)); }
+    100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0 rgba(180,138,106,0)); }
+}
+
+/* Pausa la animación al hover/tap para mejor UX */
+.icono-seccion:hover, .icono-seccion:active {
+    animation-play-state: paused;
+    transform: scale(1.04);
+}
+
+@keyframes brilloDorado {
+    0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0.0));
+        opacity: 1;
+    }
+    30% {
+        filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5)) brightness(1.05);
+        opacity: 1;
+    }
+    50% {
+        filter: drop-shadow(0 0 45px rgba(212, 175, 55, 0.75)) brightness(1.1);
+        opacity: 1;
+    }
+    70% {
+        filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5)) brightness(1.05);
+        opacity: 1;
+    }
+}
+
+@media(max-width:768px){
+ h1{
         font-size:58px;
     }
 
@@ -189,13 +259,25 @@ footer{
     .gallery{
         grid-template-columns:1fr;
     }
+
+    .card {
+        padding: 30px 20px;  /* ← reducís el padding lateral de 120px a 20px */
+    }
+
     .btn{
         display: block;
         width: 80%;
         margin: 10px auto;
-        padding: 15px 20px;
+        padding: 12px 35px;
         font-size: 16px;
         text-align: center;
+    }
+
+    section.card:last-of-type .btn {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 420px;
     }
 
 }

@@ -42,7 +42,7 @@ function enviarSugerencia(){
         return;
     }
 
-    const mensaje = `Hola Valentina! 🎶 Quiero sugerir una canción para la fiesta de Sofía: *${cancion}* de *${artista}*`;
+    const mensaje = `Hola Gabriela! 🎶 Quiero sugerir una canción para la fiesta de Sofía: *${cancion}* de *${artista}*`;
     const url = `https://wa.me/5493624656373?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
 }
