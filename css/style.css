@@ -151,11 +151,20 @@ p {
     grid-template-columns:1fr 1fr;
     gap:10px;
     padding:20px;
+    justify-items:center;
 }
 
 .gallery img{
     width:100%;
     border-radius:20px;
+    display:block;
+}
+
+.gallery img.center-image {
+    grid-column: 1 / -1;
+    width: auto;
+    max-width: 700px;
+    justify-self: center;
 }
 
 .gift-box{
