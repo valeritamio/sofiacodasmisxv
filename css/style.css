@@ -160,6 +160,8 @@ p {
     display:block;
 }
 
+/* Use this class only when an image should span the full section width.
+   Remove it for normal side-by-side gallery images. */
 .gallery img.center-image {
     grid-column: 1 / -1;
     width: auto;
@@ -263,6 +265,12 @@ footer{
 
     h2{
         font-size:42px;
+    }
+
+    .hero-image {
+        width: 120%;
+        max-width: none;
+        margin-left: -10%;
     }
 
     .gallery{
